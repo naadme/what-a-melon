@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0E1512;
+    color: #FFF8EC;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: #C6FF4D;
+    color: #14110D;
+  }
+
+  :focus-visible {
+    outline: 3px solid #C6FF4D;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .font-tag {
+    font-family: "Space Mono", monospace;
+  }
+
+  .section-pad {
+    @apply px-6 md:px-12 lg:px-20 py-20 md:py-28;
+  }
+
+  .sticker {
+    @apply inline-flex items-center gap-2 font-tag text-xs uppercase tracking-wide px-3 py-1.5 rounded-full border-2 border-ink;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-ink text-cream font-display font-semibold text-base rounded-full border-2 border-ink transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 #14110D;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-transparent font-display font-semibold text-base rounded-full border-2 transition-all duration-200;
+  }
+
+  .btn-outline:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 currentColor;
+  }
+
+  .input-field {
+    @apply w-full bg-cream border-2 border-ink rounded-xl px-4 py-3.5 text-ink placeholder-ink/40 focus:outline-none transition-all duration-200 text-sm font-body;
+  }
+
+  .input-field:focus {
+    box-shadow: 4px 4px 0 0 #C6FF4D;
+    transform: translate(-2px, -2px);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 22s linear infinite;
+  }
+
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-hero-1 { animation: heroReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+  .animate-hero-2 { animation: heroReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both; }
+  .animate-hero-3 { animation: heroReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+  .animate-hero-4 { animation: heroReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both; }
+
+  .scrolled-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-1, .animate-hero-2, .animate-hero-3, .animate-hero-4, .animate-marquee {
+      animation: none;
+    }
+    .scroll-hidden {
+      opacity: 1;
+      transform: none;
+    }
+    .btn-primary:hover, .btn-outline:hover, .input-field:focus {
+      transform: none;
+    }
+    .reel-media {
+      transition: none !important;
+    }
+  }
+}
