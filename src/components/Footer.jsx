@@ -1,12 +1,11 @@
-const scrollTo = (id) => {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-};
+import { scrollToTarget } from '../lib/scroll';
 
-const navLinks = ['Services', 'Work', 'About', 'Contact'];
-const contactEmail = 'piyushpanbude2107@gmail.com';
-const whatsappUrl = 'https://wa.me/919321881100';
-const instagramUrl = 'https://instagram.com/whatamelon';
+const scrollTo = (id) => scrollToTarget(id);
+
+const navLinks = ['Services', 'Work', 'About'];
+const contactEmail = 'whatamelonmedia@gmail.com';
+const whatsappUrl = 'https://wa.me/918928821881';
+const instagramUrl = 'https://www.instagram.com/whatamelonmedia?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -31,7 +30,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               {navLinks.map(link => (
                 <li key={link}>
-                  <button onClick={() => scrollTo(link.toLowerCase())} className="text-ink/60 hover:text-ink text-sm font-medium transition-colors duration-200">
+                  <button onClick={() => scrollTo(link.toLowerCase())} className="link-slide text-ink/60 hover:text-ink text-sm font-medium">
                     {link}
                   </button>
                 </li>
@@ -39,9 +38,9 @@ export default function Footer() {
             </ul>
 
             <ul className="flex flex-col gap-3">
-              <li><a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-ink/60 hover:text-ink text-sm font-medium transition-colors duration-200">Instagram</a></li>
-              <li><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-ink/60 hover:text-ink text-sm font-medium transition-colors duration-200">WhatsApp</a></li>
-              <li><a href={`mailto:${contactEmail}`} className="text-ink/60 hover:text-ink text-sm font-medium transition-colors duration-200">{contactEmail}</a></li>
+              <li><a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="link-slide text-ink/60 hover:text-ink text-sm font-medium">Instagram</a></li>
+              <li><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="link-slide text-ink/60 hover:text-ink text-sm font-medium">WhatsApp</a></li>
+              <li><a href={`mailto:${contactEmail}`} className="link-slide text-ink/60 hover:text-ink text-sm font-medium">{contactEmail}</a></li>
             </ul>
           </div>
         </div>

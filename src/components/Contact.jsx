@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useCurtain } from '../hooks/useCurtain';
+import Magnetic from './Magnetic';
+import Arrow from './Arrow';
 
 const services = [
   'Reel Making',
@@ -24,6 +27,8 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const ref = useScrollReveal();
+  const sectionRef = useRef(null);
+  useCurtain(sectionRef);
 
   const validate = () => {
     const e = {};
@@ -40,7 +45,7 @@ export default function Contact() {
     if (errors[field]) setErrors(prev => ({ ...prev, [field]: '' }));
   };
 
-  const contactEmail = 'piyushpanbude2107@gmail.com';
+  const contactEmail = 'whatamelonmedia@gmail.com';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,13 +72,13 @@ export default function Contact() {
     setErrors({});
   };
 
-  const instagramUrl = 'https://instagram.com/whatamelon';
-  const whatsappUrl = 'https://wa.me/919321881100';
+  const instagramUrl = 'https://www.instagram.com/whatamelonmedia?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==';
+  const whatsappUrl = 'https://wa.me/918928821881';
   const emailUrl = `mailto:${contactEmail}`;
 
   return (
-    <section id="contact" className="section-pad bg-rind" ref={ref}>
-      <div className="max-w-screen-xl mx-auto">
+    <section ref={sectionRef} id="contact" className="section-pad bg-rind">
+      <div className="max-w-screen-xl mx-auto" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 lg:gap-20">
           <div className="lg:col-span-2 scroll-hidden">
             <span className="sticker bg-flesh text-ink mb-6">Let's talk</span>
@@ -178,9 +183,11 @@ export default function Contact() {
                   {errors.message && <p className="text-flesh text-xs mt-2">{errors.message}</p>}
                 </div>
 
-                <button type="submit" className="btn-primary bg-zest text-ink hover:shadow-[5px_5px_0_0_#FFF8EC] w-full sm:w-auto justify-center text-base py-4 px-10">
-                  Send it
-                </button>
+                <Magnetic className="block sm:inline-block" strength={0.3}>
+                  <button type="submit" className="btn-primary bg-zest text-ink hover:shadow-[5px_5px_0_0_#FFF8EC] w-full sm:w-auto justify-center text-base py-4 px-10">
+                    Send it <Arrow />
+                  </button>
+                </Magnetic>
 
                 <p className="text-cream/50 text-xs mt-4">
                   This opens your email app with the details pre-filled — no backend required.

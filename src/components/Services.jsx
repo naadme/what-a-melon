@@ -1,4 +1,6 @@
+import { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useCurtain } from '../hooks/useCurtain';
 
 const services = [
   { num: '01', title: 'Reels That Hit', description: "Scroll-stopping, sound-on, shareable. We write, shoot, and edit reels built for the feed, not the boardroom." },
@@ -11,9 +13,11 @@ const services = [
 
 export default function Services() {
   const ref = useScrollReveal();
+  const sectionRef = useRef(null);
+  useCurtain(sectionRef);
 
   return (
-    <section id="services" className="section-pad bg-zest text-ink">
+    <section ref={sectionRef} id="services" className="section-pad bg-zest text-ink">
       <div className="max-w-screen-xl mx-auto" ref={ref}>
         <div className="scroll-hidden mb-14 md:mb-16">
           <span className="sticker bg-cream text-ink mb-6">Services</span>

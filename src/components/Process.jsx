@@ -1,4 +1,6 @@
+import { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useCurtain } from '../hooks/useCurtain';
 
 const steps = [
   { num: '01', label: 'Stalk it', description: 'We dig into your brand, audience, and goals — before touching a single pixel.', color: '#C6FF4D' },
@@ -9,10 +11,12 @@ const steps = [
 
 export default function Process() {
   const ref = useScrollReveal();
+  const sectionRef = useRef(null);
+  useCurtain(sectionRef);
 
   return (
-    <section className="section-pad bg-rind" ref={ref}>
-      <div className="max-w-screen-xl mx-auto">
+    <section ref={sectionRef} className="section-pad bg-rind">
+      <div className="max-w-screen-xl mx-auto" ref={ref}>
         <div className="scroll-hidden mb-16 md:mb-20">
           <span className="sticker bg-transparent text-cream border-cream mb-6">Process</span>
           <h2 className="font-display font-extrabold text-4xl md:text-6xl text-cream">How we work.</h2>
